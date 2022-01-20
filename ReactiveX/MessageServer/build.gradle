@@ -1,0 +1,42 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.32'
+    id 'application'
+}
+
+group = 'me.marcel'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+    implementation 'io.reactivex.rxjava3:rxkotlin:3.0.1'
+    implementation("io.ktor:ktor-server-netty:1.5.4")
+    implementation("io.ktor:ktor-websockets:1.5.4")
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    implementation group: 'com.github.davidmoten', name: 'rxjava2-jdbc', version: '0.2.7'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.25'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.13.3'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.13.3'
+    implementation group: 'dev.miku', name: 'r2dbc-mysql', version: '0.8.2.RELEASE'
+    implementation group: 'io.r2dbc', name: 'r2dbc-pool', version: '0.8.7.RELEASE'
+
+}
+
+test {
+    useJUnit()
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+application {
+    mainClassName = 'MainKt'
+}
