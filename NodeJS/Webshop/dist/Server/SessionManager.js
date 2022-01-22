@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SessionManager = void 0;
 const clientmessages_1 = require("../Messages/clientmessages");
 const servermessages_1 = require("../Messages/servermessages");
 const sql_connector_1 = require("./sql-connector");
@@ -292,7 +293,7 @@ class SessionManager {
                 if (cart != null && cart.entries.length > 0) {
                     CheckCreditCard_1.checkCreditCard(this.user).then(result => {
                         if (result) {
-                            sql_connector_1.retryWithTwo(sql_connector_1.checkout, this.user, cart).then(result => {
+                            sql_connector_1.retryWithTwo(sql_connector_1.checkOut, this.user, cart).then(result => {
                                 if (result) {
                                     sql_connector_1.retryWithOne(sql_connector_1.deleteCart, cart).then(result => {
                                         if (result) {

@@ -1,7 +1,7 @@
 import { Cart, CartEntry, Item, User } from "../Entities/entities";
 import { LoginMessage, LogoutMessage, CheckOutMessage, TransactionsMessage, ItemSearchMessage, CartModificationMessage, RegisterMessage, MessageTypes } from "../Messages/clientmessages";
 import { ReturnMessage, ReturnMessageItem, ReturnMessageTransaction, ReturnMessageCart, ReturnMessageLogin, ReturnMessageLogout, ReturnMessageRegister, State, ReturnMessageCheckOut } from "../Messages/servermessages";
-import { getUser, getTransactions, getAllItems, getItemsByName, getCartFromUser, updateCart, checkout, modifyCartEntry, createUser, deleteEntry, getItemByID, retryWith, retryWithOne, retryWithTwo, deleteCart } from "./sql-connector";
+import { getUser, getTransactions, getAllItems, getItemsByName, getCartFromUser, updateCart, checkOut, modifyCartEntry, createUser, deleteEntry, getItemByID, retryWith, retryWithOne, retryWithTwo, deleteCart } from "./sql-connector";
 import { checkCreditCard } from "../Server/CheckCreditCard";
 class SessionManager {
 
@@ -304,7 +304,7 @@ class SessionManager {
                 if (cart != null && cart.entries.length > 0) {
                     checkCreditCard(this.user).then(result => {
                         if (result) {
-                            retryWithTwo(checkout, this.user, cart).then(result => {
+                            retryWithTwo(checkOut, this.user, cart).then(result => {
                                 if (result) {
                                     retryWithOne(deleteCart, cart).then(result => {
                                         if (result) {

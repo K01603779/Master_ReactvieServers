@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.WebshopSessionManager = void 0;
 const clientmessages_1 = require("../Messages/clientmessages");
 const servermessages_1 = require("../Messages/servermessages");
 const sql_connector_1 = require("../Server/sql-connector");
@@ -56,18 +57,11 @@ class WebshopSessionManager {
     registerUser(msg) {
         var regUser = { password: msg.password, email: msg.email, firstName: msg.firstName, lastName: msg.lastName, address: msg.address, creditCard: msg.creditCard, userID: null };
         var retmsg = new servermessages_1.ReturnMessageRegister(servermessages_1.State.Failure, "");
-        /*createUser(regUser).then(user => {
-            this.user = user;
-            retmsg = new ReturnMessageRegister(State.Success, user.email);
-            this.sendMsg(retmsg);
-        }, (reject) => {
-            this.sendMsg(retmsg);
-        })*/
-        sql_connector_1.retryWithOne(sql_connector_1.createUser, regUser).then(user => {
+        sql_connector_1.createUser(regUser).then(user => {
             this.user = user;
             retmsg = new servermessages_1.ReturnMessageRegister(servermessages_1.State.Success, user.email);
             this.sendMsg(retmsg);
-        }).catch(() => {
+        }, (reject) => {
             this.sendMsg(retmsg);
         });
     }
@@ -76,20 +70,16 @@ class WebshopSessionManager {
         console.log(`Login recevied from ${msg.email}`);
         if (this.user == null) {
             console.log("Get User will be called");
-            sql_connector_1.retryWithTwo(sql_connector_1.getUser, msg.email, msg.pwd).then(result => {
-                //getUser(msg.email, msg.pwd).then(result => {
+            sql_connector_1.getUser(msg.email, msg.pwd).then(result => {
                 if (result != null) {
                     this.user = result;
                     retmsg = new servermessages_1.ReturnMessageLogin(servermessages_1.State.Success, this.user.email);
-                    if (this.cart != null) {
-                        sql_connector_1.retryWithTwo(sql_connector_1.updateCart, this.user, this.cart).catch(() => {
-                            //TODO 
-                            console.log("Error while updating cart after login " + this.user.email);
-                        });
-                    }
+                }
+                if (this.cart != null) {
+                    sql_connector_1.updateCart(this.user, this.cart);
                 }
                 this.sendMsg(retmsg);
-            }).catch(() => {
+            }, () => {
                 this.sendMsg(retmsg);
             });
             console.log("After Get User was called");
@@ -111,13 +101,10 @@ class WebshopSessionManager {
     transactions(msg) {
         var retmsg = new servermessages_1.ReturnMessage(servermessages_1.State.Failure);
         if (this.user != null) {
-            sql_connector_1.retryWithOne(sql_connector_1.getTransactions, this.user).then(transactions => {
-                //getTransactions(this.user).then(transactions => {
+            sql_connector_1.getTransactions(this.user).then(transactions => {
                 if (transactions != null) {
                     retmsg = new servermessages_1.ReturnMessageTransaction(servermessages_1.State.Success, transactions);
                 }
-                this.sendMsg(retmsg);
-            }).catch(() => {
                 this.sendMsg(retmsg);
             });
         }
@@ -128,24 +115,18 @@ class WebshopSessionManager {
     getItems(msg) {
         var retmsg = new servermessages_1.ReturnMessage(servermessages_1.State.Failure);
         if (msg.searchString == "") {
-            sql_connector_1.retryWith(sql_connector_1.getAllItems).then(items => {
-                //getAllItems().then(items => {
+            sql_connector_1.getAllItems().then(items => {
                 if (items != null) {
                     retmsg = new servermessages_1.ReturnMessageItem(servermessages_1.State.Success, items);
                 }
-                this.sendMsg(retmsg);
-            }).catch(() => {
                 this.sendMsg(retmsg);
             });
         }
         else {
-            sql_connector_1.retryWithOne(sql_connector_1.getAllItemBySearch, msg.searchString).then(items => {
-                //getAllItemBySearch(msg.searchString).then(items => {
+            sql_connector_1.getItemsByName(msg.searchString).then(items => {
                 if (items != null) {
                     retmsg = new servermessages_1.ReturnMessageItem(servermessages_1.State.Success, items);
                 }
-                this.sendMsg(retmsg);
-            }).catch(() => {
                 this.sendMsg(retmsg);
             });
         }
@@ -164,8 +145,7 @@ class WebshopSessionManager {
     modifyCartSession(msg) {
         var entry;
         if (msg.itemID != null && msg.amount != null && msg.amount != 0) {
-            sql_connector_1.retryWithOne(sql_connector_1.getItemByID, msg.itemID).then(item => {
-                //getItemByID(msg.itemID).then((item) => {
+            sql_connector_1.getItemByID(msg.itemID).then((item) => {
                 if (msg.add == true) {
                     entry = this.addItem(msg.itemID, msg.amount, this.cart, item);
                 }
@@ -188,9 +168,6 @@ class WebshopSessionManager {
                 }
                 var cartmsg = new servermessages_1.ReturnMessageCart(servermessages_1.State.Success, this.cart);
                 this.sendMsg(cartmsg);
-            }).catch(() => {
-                var cartmsg = new servermessages_1.ReturnMessageCart(servermessages_1.State.Failure, null);
-                this.sendMsg(cartmsg);
             });
         }
     }
@@ -198,19 +175,14 @@ class WebshopSessionManager {
         var entry;
         console.log("Modify Cart ", this.user);
         if (msg.itemID != null && msg.amount != null) {
-            sql_connector_1.retryWithOne(sql_connector_1.getItemByID, msg.itemID).then(item => {
-                //getItemByID(msg.itemID).then((item) => {
-                sql_connector_1.retryWithOne(sql_connector_1.getCartFromUser, this.user).then(cart => {
-                    //getCartFromUser(this.user).then(cart => {
+            sql_connector_1.getItemByID(msg.itemID).then((item) => {
+                sql_connector_1.getCartFromUser(this.user).then(cart => {
                     console.log(`received cart ${JSON.stringify(cart)}`);
                     if (msg.add == true) {
                         entry = this.addItem(msg.itemID, msg.amount, cart, item);
                         console.log(`entry ${JSON.stringify(entry)}`);
-                        sql_connector_1.retryWithTwo(sql_connector_1.modifyCartEntry, entry, cart).then(success => {
-                            //modifyCartEntry(entry, cart).then(success => {
+                        sql_connector_1.modifyCartEntry(entry, cart).then(success => {
                             this.returnCart(success);
-                        }).catch(() => {
-                            this.sendMsg(new servermessages_1.ReturnMessageCart(servermessages_1.State.Failure, null));
                         });
                     }
                     else {
@@ -219,19 +191,13 @@ class WebshopSessionManager {
                         if (entry != null) {
                             if (entry.amount <= 0) {
                                 console.log(`delete entry ${entry}`);
-                                sql_connector_1.retryWithTwo(sql_connector_1.deleteEntry, cart, entry).then(success => {
-                                    //deleteEntry(cart, entry).then(success => {
+                                sql_connector_1.deleteEntry(cart, entry).then(success => {
                                     this.returnCart(success);
-                                }).catch(() => {
-                                    this.sendMsg(new servermessages_1.ReturnMessageCart(servermessages_1.State.Failure, null));
                                 });
                             }
                             else {
-                                sql_connector_1.retryWithTwo(sql_connector_1.modifyCartEntry, entry, cart).then(success => {
-                                    //modifyCartEntry(entry, cart).then(success => {
+                                sql_connector_1.modifyCartEntry(entry, cart).then(success => {
                                     this.returnCart(success);
-                                }).catch(() => {
-                                    this.sendMsg(new servermessages_1.ReturnMessageCart(servermessages_1.State.Failure, null));
                                 });
                             }
                         }
@@ -239,10 +205,8 @@ class WebshopSessionManager {
                             this.sendMsg(new servermessages_1.ReturnMessageCart(servermessages_1.State.Failure, null));
                         }
                     }
-                }).catch(() => {
-                    this.sendMsg(new servermessages_1.ReturnMessageCart(servermessages_1.State.Failure, null));
                 });
-            }).catch(() => {
+            }, () => {
                 this.sendMsg(new servermessages_1.ReturnMessageCart(servermessages_1.State.Failure, null));
             });
         }
@@ -250,11 +214,8 @@ class WebshopSessionManager {
     returnCart(success) {
         var msg = new servermessages_1.ReturnMessage(servermessages_1.State.Failure);
         if (success) {
-            sql_connector_1.retryWithOne(sql_connector_1.getCartFromUser, this.user).then(cart => {
-                //getCartFromUser(this.user).then(cart => {
+            sql_connector_1.getCartFromUser(this.user).then(cart => {
                 msg = new servermessages_1.ReturnMessageCart(servermessages_1.State.Success, cart);
-                this.sendMsg(msg);
-            }).catch(() => {
                 this.sendMsg(msg);
             });
         }
@@ -285,19 +246,15 @@ class WebshopSessionManager {
         });
         return retEntry;
     }
-    //TODO Checkout check Credentials
     checkOutCart(msg) {
         var retmsg = new servermessages_1.ReturnMessageCheckOut(servermessages_1.State.Failure);
         if (this.user != null) {
             // send checkout to mysql server
-            sql_connector_1.retryWithOne(sql_connector_1.checkOut, this.user).then(ret => {
-                //checkOut(this.user).then(ret => {
+            sql_connector_1.checkOut(this.user, this.cart).then(ret => {
                 if (ret) {
                     retmsg = new servermessages_1.ReturnMessageCheckOut(servermessages_1.State.Success);
                 }
                 console.log("send CheckoutMsg");
-                this.sendMsg(retmsg);
-            }).catch(() => {
                 this.sendMsg(retmsg);
             });
         }

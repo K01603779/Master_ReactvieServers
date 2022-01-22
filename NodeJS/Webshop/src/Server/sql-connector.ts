@@ -127,7 +127,7 @@ export async function getTransactionEntries(transactionID: number): Promise<Arra
 }
 
 //TODO change method that it resolves like javaEE
-export async function checkOutOld(user: User): Promise<boolean> {
+export async function checkOut_old(user: User): Promise<boolean> {
     // set autocommit
     return new Promise((resolve, reject) => {
         getCartFromUser(user).then(cart => {
@@ -168,7 +168,7 @@ async function insertTransactionEntry(id: any, entry: CartEntry): Promise<boolea
     });
 }
 
-export async function checkout(user: User, cart: Cart): Promise<boolean> {
+export async function checkOut(user: User, cart: Cart): Promise<boolean> {
     return new Promise((resolve, reject) => {
         pool.query('insert into  transactions (userID, orderDate) values (?,?);', [user.userID, new Date()], async function (error, results, fields) {
             if (error) return reject(false);

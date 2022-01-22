@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MessageTypes = void 0;
 var MessageTypes;
 (function (MessageTypes) {
     MessageTypes[MessageTypes["Login"] = 1] = "Login";

@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CartMessage = exports.MessageTypes = exports.RegisterMessage = exports.CartModificationMessage = exports.ItemSearchMessage = exports.TransactionsMessage = exports.CheckOutMessage = exports.LogoutMessage = exports.LoginMessage = void 0;
 const types_1 = require("../Messages/types");
-exports.MessageTypes = types_1.MessageTypes;
+Object.defineProperty(exports, "MessageTypes", { enumerable: true, get: function () { return types_1.MessageTypes; } });
 class RequestMessage {
 }
-class LoginMessage extends RequestMessage {
+class LoginRequest extends RequestMessage {
     constructor(email, pwd) {
         super();
         this.type = types_1.MessageTypes.Login;
@@ -12,37 +13,37 @@ class LoginMessage extends RequestMessage {
         this.pwd = pwd;
     }
 }
-exports.LoginMessage = LoginMessage;
-class LogoutMessage extends RequestMessage {
+exports.LoginMessage = LoginRequest;
+class LogoutRequest extends RequestMessage {
     constructor() {
         super(...arguments);
         this.type = types_1.MessageTypes.Logout;
     }
 }
-exports.LogoutMessage = LogoutMessage;
-class CheckOutMessage extends RequestMessage {
+exports.LogoutMessage = LogoutRequest;
+class CheckoutRequest extends RequestMessage {
     constructor() {
         super(...arguments);
         this.type = types_1.MessageTypes.Checkout;
     }
 }
-exports.CheckOutMessage = CheckOutMessage;
-class TransactionsMessage extends RequestMessage {
+exports.CheckOutMessage = CheckoutRequest;
+class TransactionRequest extends RequestMessage {
     constructor() {
         super(...arguments);
         this.type = types_1.MessageTypes.Transaction;
     }
 }
-exports.TransactionsMessage = TransactionsMessage;
-class ItemSearchMessage extends RequestMessage {
+exports.TransactionsMessage = TransactionRequest;
+class SearchRequest extends RequestMessage {
     constructor(search) {
         super();
         this.type = types_1.MessageTypes.ItemSearch;
         this.searchString = search;
     }
 }
-exports.ItemSearchMessage = ItemSearchMessage;
-class CartModificationMessage extends RequestMessage {
+exports.ItemSearchMessage = SearchRequest;
+class CartModificationRequest extends RequestMessage {
     constructor(itemID, amount, add) {
         super();
         this.type = types_1.MessageTypes.ModifyCart;
@@ -51,8 +52,8 @@ class CartModificationMessage extends RequestMessage {
         this.itemID = itemID;
     }
 }
-exports.CartModificationMessage = CartModificationMessage;
-class RegisterMessage extends RequestMessage {
+exports.CartModificationMessage = CartModificationRequest;
+class RegistrationRequest extends RequestMessage {
     constructor(email, firstName, lastName, address, password, card) {
         super();
         this.type = types_1.MessageTypes.Register;
@@ -64,12 +65,12 @@ class RegisterMessage extends RequestMessage {
         this.creditCard = card;
     }
 }
-exports.RegisterMessage = RegisterMessage;
-class CartMessage extends RequestMessage {
+exports.RegisterMessage = RegistrationRequest;
+class CartRequest extends RequestMessage {
     constructor() {
         super(...arguments);
         this.type = types_1.MessageTypes.Cart;
     }
 }
-exports.CartMessage = CartMessage;
+exports.CartMessage = CartRequest;
 //# sourceMappingURL=clientmessages.js.map

@@ -1,7 +1,7 @@
 import { Cart, CartEntry, Item, User } from "../Entities/entities";
 import { LoginMessage, LogoutMessage, CheckOutMessage, TransactionsMessage, ItemSearchMessage, CartModificationMessage, RegisterMessage, MessageTypes } from "../Messages/clientmessages";
 import { ReturnMessage, ReturnMessageItem, ReturnMessageTransaction, ReturnMessageCart, ReturnMessageLogin, ReturnMessageLogout, ReturnMessageRegister, State, ReturnMessageCheckOut } from "../Messages/servermessages";
-import { getUser, getTransactions, getAllItems, getAllItemBySearch, getCartFromUser, updateCart, checkOut, modifyCartEntry, createUser, deleteEntry, getItemByID, deleteCart } from "../Server/sql-connector";
+import { getUser, getTransactions, getAllItems, getItemsByName, getCartFromUser, updateCart, checkOut, modifyCartEntry, createUser, deleteEntry, getItemByID, deleteCart, checkOut_old } from "../Server/sql-connector";
 class WebshopSessionManager {
 
     sessionID: number;
@@ -132,7 +132,7 @@ class WebshopSessionManager {
                 this.sendMsg(retmsg);
             });
         } else {
-            getAllItemBySearch(msg.searchString).then(items => {
+            getItemsByName(msg.searchString).then(items => {
                 if (items != null) {
                     retmsg = new ReturnMessageItem(State.Success, items);
                 }
@@ -260,7 +260,7 @@ class WebshopSessionManager {
         var retmsg = new ReturnMessageCheckOut(State.Failure);
         if (this.user != null) {
             // send checkout to mysql server
-            checkOut(this.user).then(ret => {
+            checkOut(this.user,this.cart).then(ret => {
                 if (ret) {
                     retmsg = new ReturnMessageCheckOut(State.Success);
                 }
