@@ -4,14 +4,14 @@ enum State {
     Success = 0,
     Failure
 }
-class ReturnMessage {
+class ResponseMessage {
     state: State;
     type: MessageTypes;
     constructor(state: State) {
         this.state = state;
     }
 }
-class ReturnMessageLogin extends ReturnMessage {
+class LoginResponse extends ResponseMessage {
     type = MessageTypes.Login;
     username: String;
     constructor(state: State, username: String) {
@@ -19,13 +19,13 @@ class ReturnMessageLogin extends ReturnMessage {
         this.username = username;
     }
 }
-class ReturnMessageLogout extends ReturnMessage {
+class LogoutResponse extends ResponseMessage {
     type = MessageTypes.Logout;
     constructor(state: State) {
         super(state);
     }
 }
-class ReturnMessageRegister extends ReturnMessage {
+class RegistrationResponse extends ResponseMessage {
     type = MessageTypes.Register;
     username: String;
     constructor(state: State, username: String) {
@@ -34,7 +34,7 @@ class ReturnMessageRegister extends ReturnMessage {
     }
 }
 
-class ReturnMessageItem extends ReturnMessage {
+class SearchResponse extends ResponseMessage {
     items: Item[];
     type = MessageTypes.ItemSearch;
     constructor(state: State, items: Item[]) {
@@ -42,7 +42,7 @@ class ReturnMessageItem extends ReturnMessage {
         this.items = items;
     }
 }
-class ReturnMessageTransaction extends ReturnMessage {
+class TransactionResponse extends ResponseMessage {
     list: Transaction[];
     type = MessageTypes.Transaction;
     constructor(state: State, list: Transaction[]) {
@@ -50,7 +50,7 @@ class ReturnMessageTransaction extends ReturnMessage {
         this.list = list;
     }
 }
-class ReturnMessageCart extends ReturnMessage {
+class CartResponse extends ResponseMessage {
     cart: Cart;
     type = MessageTypes.ModifyCart;
     constructor(state: State, cart: Cart) {
@@ -58,7 +58,7 @@ class ReturnMessageCart extends ReturnMessage {
         this.cart = cart;
     }
 }
-class ReturnMessageCheckOut extends ReturnMessage {
+class CheckoutResponse extends ResponseMessage {
     type = MessageTypes.Checkout;
 }
-export { ReturnMessage, ReturnMessageItem, ReturnMessageTransaction, ReturnMessageCart, ReturnMessageLogin, ReturnMessageLogout, ReturnMessageRegister, ReturnMessageCheckOut, State };
+export { ResponseMessage as ReturnMessage, SearchResponse as ReturnMessageItem, TransactionResponse as ReturnMessageTransaction, CartResponse as ReturnMessageCart, LoginResponse as ReturnMessageLogin, LogoutResponse as ReturnMessageLogout, RegistrationResponse as ReturnMessageRegister, CheckoutResponse as ReturnMessageCheckOut, State };

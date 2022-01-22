@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const types_1 = require("../Messages/types");
 exports.MessageTypes = types_1.MessageTypes;
-class Message {
+class RequestMessage {
 }
-class LoginMessage extends Message {
+class LoginMessage extends RequestMessage {
     constructor(email, pwd) {
         super();
         this.type = types_1.MessageTypes.Login;
@@ -13,28 +13,28 @@ class LoginMessage extends Message {
     }
 }
 exports.LoginMessage = LoginMessage;
-class LogoutMessage extends Message {
+class LogoutMessage extends RequestMessage {
     constructor() {
         super(...arguments);
         this.type = types_1.MessageTypes.Logout;
     }
 }
 exports.LogoutMessage = LogoutMessage;
-class CheckOutMessage extends Message {
+class CheckOutMessage extends RequestMessage {
     constructor() {
         super(...arguments);
         this.type = types_1.MessageTypes.Checkout;
     }
 }
 exports.CheckOutMessage = CheckOutMessage;
-class TransactionsMessage extends Message {
+class TransactionsMessage extends RequestMessage {
     constructor() {
         super(...arguments);
         this.type = types_1.MessageTypes.Transaction;
     }
 }
 exports.TransactionsMessage = TransactionsMessage;
-class ItemSearchMessage extends Message {
+class ItemSearchMessage extends RequestMessage {
     constructor(search) {
         super();
         this.type = types_1.MessageTypes.ItemSearch;
@@ -42,7 +42,7 @@ class ItemSearchMessage extends Message {
     }
 }
 exports.ItemSearchMessage = ItemSearchMessage;
-class CartModificationMessage extends Message {
+class CartModificationMessage extends RequestMessage {
     constructor(itemID, amount, add) {
         super();
         this.type = types_1.MessageTypes.ModifyCart;
@@ -52,7 +52,7 @@ class CartModificationMessage extends Message {
     }
 }
 exports.CartModificationMessage = CartModificationMessage;
-class RegisterMessage extends Message {
+class RegisterMessage extends RequestMessage {
     constructor(email, firstName, lastName, address, password, card) {
         super();
         this.type = types_1.MessageTypes.Register;
@@ -65,7 +65,7 @@ class RegisterMessage extends Message {
     }
 }
 exports.RegisterMessage = RegisterMessage;
-class CartMessage extends Message {
+class CartMessage extends RequestMessage {
     constructor() {
         super(...arguments);
         this.type = types_1.MessageTypes.Cart;

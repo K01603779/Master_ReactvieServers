@@ -7,13 +7,13 @@ var State;
     State[State["Failure"] = 1] = "Failure";
 })(State || (State = {}));
 exports.State = State;
-class ReturnMessage {
+class ResponseMessage {
     constructor(state) {
         this.state = state;
     }
 }
-exports.ReturnMessage = ReturnMessage;
-class ReturnMessageLogin extends ReturnMessage {
+exports.ReturnMessage = ResponseMessage;
+class ReturnMessageLogin extends ResponseMessage {
     constructor(state, username) {
         super(state);
         this.type = types_1.MessageTypes.Login;
@@ -21,14 +21,14 @@ class ReturnMessageLogin extends ReturnMessage {
     }
 }
 exports.ReturnMessageLogin = ReturnMessageLogin;
-class ReturnMessageLogout extends ReturnMessage {
+class ReturnMessageLogout extends ResponseMessage {
     constructor(state) {
         super(state);
         this.type = types_1.MessageTypes.Logout;
     }
 }
 exports.ReturnMessageLogout = ReturnMessageLogout;
-class ReturnMessageRegister extends ReturnMessage {
+class ReturnMessageRegister extends ResponseMessage {
     constructor(state, username) {
         super(state);
         this.type = types_1.MessageTypes.Register;
@@ -36,7 +36,7 @@ class ReturnMessageRegister extends ReturnMessage {
     }
 }
 exports.ReturnMessageRegister = ReturnMessageRegister;
-class ReturnMessageItem extends ReturnMessage {
+class ReturnMessageItem extends ResponseMessage {
     constructor(state, items) {
         super(state);
         this.type = types_1.MessageTypes.ItemSearch;
@@ -44,7 +44,7 @@ class ReturnMessageItem extends ReturnMessage {
     }
 }
 exports.ReturnMessageItem = ReturnMessageItem;
-class ReturnMessageTransaction extends ReturnMessage {
+class ReturnMessageTransaction extends ResponseMessage {
     constructor(state, list) {
         super(state);
         this.type = types_1.MessageTypes.Transaction;
@@ -52,7 +52,7 @@ class ReturnMessageTransaction extends ReturnMessage {
     }
 }
 exports.ReturnMessageTransaction = ReturnMessageTransaction;
-class ReturnMessageCart extends ReturnMessage {
+class ReturnMessageCart extends ResponseMessage {
     constructor(state, cart) {
         super(state);
         this.type = types_1.MessageTypes.ModifyCart;
@@ -60,7 +60,7 @@ class ReturnMessageCart extends ReturnMessage {
     }
 }
 exports.ReturnMessageCart = ReturnMessageCart;
-class ReturnMessageCheckOut extends ReturnMessage {
+class ReturnMessageCheckOut extends ResponseMessage {
     constructor() {
         super(...arguments);
         this.type = types_1.MessageTypes.Checkout;

@@ -1,8 +1,8 @@
 import { MessageTypes } from "../Messages/types";
-class Message {
+class RequestMessage {
     type: MessageTypes;
 }
-class LoginMessage extends Message {
+class LoginRequest extends RequestMessage {
     email: string;
     pwd: string;
     type = MessageTypes.Login;
@@ -13,19 +13,19 @@ class LoginMessage extends Message {
     }
 }
 
-class LogoutMessage extends Message {
+class LogoutRequest extends RequestMessage {
     type = MessageTypes.Logout;
 }
 
-class CheckOutMessage extends Message {
+class CheckoutRequest extends RequestMessage {
     type = MessageTypes.Checkout;
 }
 
-class TransactionsMessage extends Message {
+class TransactionRequest extends RequestMessage {
     type = MessageTypes.Transaction;
 }
 
-class ItemSearchMessage extends Message {
+class SearchRequest extends RequestMessage {
     type = MessageTypes.ItemSearch;
     searchString: string;
     constructor(search: string) {
@@ -34,7 +34,7 @@ class ItemSearchMessage extends Message {
     }
 }
 
-class CartModificationMessage extends Message {
+class CartModificationRequest extends RequestMessage {
     type = MessageTypes.ModifyCart;
     itemID: number;
     amount: number;
@@ -47,7 +47,7 @@ class CartModificationMessage extends Message {
     }
 }
 
-class RegisterMessage extends Message {
+class RegistrationRequest extends RequestMessage {
     type = MessageTypes.Register;
     email: string;
     firstName: string;
@@ -66,11 +66,11 @@ class RegisterMessage extends Message {
     }
 }
 
-class CartMessage extends Message {
+class CartRequest extends RequestMessage {
     type = MessageTypes.Cart;
 }
 
 
 
 
-export { LoginMessage, LogoutMessage, CheckOutMessage, TransactionsMessage, ItemSearchMessage, CartModificationMessage, RegisterMessage, MessageTypes, CartMessage };
+export { LoginRequest as LoginMessage, LogoutRequest as LogoutMessage, CheckoutRequest as CheckOutMessage, TransactionRequest as TransactionsMessage, SearchRequest as ItemSearchMessage, CartModificationRequest as CartModificationMessage, RegistrationRequest as RegisterMessage, MessageTypes, CartRequest as CartMessage };

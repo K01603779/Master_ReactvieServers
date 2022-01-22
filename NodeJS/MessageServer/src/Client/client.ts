@@ -32,6 +32,7 @@ client.on('connect', function (connection) {
             switch (msg.type) {
                 case MsgType.Private:
                     console.log(`received Msg from ${msg.senderID} => ${(msg as PrivateMessage).content}`);
+                    console.log(`ReceivedMsg ${message.utf8Data}`);
                     break;
                 case MsgType.InviteToGroup:
                     console.log(`Receive request to join group ${(msg as InviteToGroup).senderID}`);
@@ -114,9 +115,14 @@ client.on('connect', function (connection) {
     }
 });
 //const url = 'ws://localhost:8080/';
-const url = 'ws://localhost:8080/JSP-Message/message';
-//const url = 'ws://192.168.0.18:8080/greeter'; //akka
+//const url = 'ws://localhost:8080/JSP-Message/message';
+//const url = 'ws://localhost:8080/greeter'; //akka
 //const url = 'ws://localhost:8080/chat'; //RxKotlin
+
+
+//const url = 'ws://192.168.0.18:8080/greeter'; //akka
+const url = 'ws://192.168.0.18:8080/JSP-Message/message';
+
 
 //const url = 'ws://localhost:8080/JSP-Message/messageasync'
 //client.connect(url, 'echo-protocol', null, { username: username, password: password, create: create }); // NodeJS
