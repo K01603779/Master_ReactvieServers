@@ -9,9 +9,9 @@ class DBMessageConnector {
 
     private fun init() {
         //Class.forName("com.mysql.jdbc.Driver");
-        ds.url = "jdbc:mysql://127.0.0.1:3306/warehouse"
+        ds.url = "jdbc:mysql://127.0.0.1:55555/warehouse"
         ds.username = "root"
-        ds.password = "12345"
+        ds.password = ""
         ds.minIdle = 5
         ds.maxIdle = 10
         ds.maxOpenPreparedStatements = 10

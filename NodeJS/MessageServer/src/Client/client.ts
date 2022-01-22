@@ -114,14 +114,14 @@ client.on('connect', function (connection) {
         }
     }
 });
-//const url = 'ws://localhost:8080/';
+//const url = 'ws://localhost:8080/'; // Node.js
 //const url = 'ws://localhost:8080/JSP-Message/message';
 //const url = 'ws://localhost:8080/greeter'; //akka
-//const url = 'ws://localhost:8080/chat'; //RxKotlin
+const url = 'ws://localhost:8080/chat'; //RxKotlin
 
 
 //const url = 'ws://192.168.0.18:8080/greeter'; //akka
-const url = 'ws://192.168.0.18:8080/JSP-Message/message';
+//const url = 'ws://192.168.0.18:8080/JSP-Message/message';
 
 
 //const url = 'ws://localhost:8080/JSP-Message/messageasync'

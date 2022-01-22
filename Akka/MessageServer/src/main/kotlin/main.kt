@@ -44,7 +44,7 @@ fun startServer() {
             handleWebSocketRequests(it, testSystem, serverActor)
         }
         val serverBindingFuture: CompletionStage<ServerBinding> = Http.get(testSystem)
-            .newServerAt("192.168.0.18", 8080)
+            .newServerAt("localhost", 8080)
             .bindSync(handler) // Bind the Websocket Handler to Akka's Http Service
         serverBindingFuture.toCompletableFuture()[3, TimeUnit.SECONDS]
         println("Press ENTER to stop.")
