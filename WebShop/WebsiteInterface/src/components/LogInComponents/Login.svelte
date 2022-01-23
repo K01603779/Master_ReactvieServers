@@ -1,6 +1,6 @@
 <script>
 	import {login,showRegister} from "../../stores/store.js";
-	let username = "marcel.homolka@jku.at";
+	let username = "m.h@jku.at";
 	let password = "12345";
 	function mylogin(){
 		login(username,password)

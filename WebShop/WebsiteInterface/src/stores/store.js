@@ -12,7 +12,6 @@ export var cart = writable([]);
 
 export function login(username, password) {
     requestLogin(username, password);
-    // TODO login
     /*loginRequest(username, password, function (response) {
         if (response === true) {
             loggedIn.set(true);

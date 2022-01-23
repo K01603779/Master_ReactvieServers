@@ -4,23 +4,6 @@ import { SessionManager } from "./SessionManager";
 var WebSocketServer = require('websocket').server;
 var http = require('http');
 
-/*const session = new WebshopSessionManager(connectionCnt++, null);
-session.login(new LoginMessage("marcel.homolka@jku.at", "12345"));
-setTimeout(() => {
-    console.log("Search Item");
-    session.getItems(new ItemSearchMessage("Apple"))
-}, 3000);
-setTimeout(() => {
-    console.log("CartModification");
-    session.modifyCart(new CartModificationMessage(1, 10, true))
-}, 4000);
-//setTimeout(() => session.checkOut(new CheckOutMessage()),5000);
-//setTimeout(() =>session.getTransactions(new TransactionsMessage()) ,6000);
-setTimeout(() => {
-    console.log("LogOut");
-    session.logout(new LogoutMessage())
-}, 6000);*/
-
 
 var server = http.createServer(function (request, response) {
     console.log((new Date()) + ' Received request for ' + request.url);

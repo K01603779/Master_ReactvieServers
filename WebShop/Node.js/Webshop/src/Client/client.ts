@@ -58,7 +58,7 @@ client.on('connect', function (connection) {
     }
     function sendTest() {
         //sendNumber();
-        sendLogin("marcel.homolka@jku.at", "12345");
+        sendLogin("m.h@jku.at", "12345");
         sendSearchItem("Apple");
         sendModifyCart(1, 10, true);
         sendCheckOut();
