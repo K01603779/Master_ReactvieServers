@@ -115,16 +115,12 @@ client.on('connect', function (connection) {
     }
 });
 //const url = 'ws://localhost:8080/'; // Node.js
-//const url = 'ws://localhost:8080/JSP-Message/message';
+//const url = 'ws://localhost:8080/JSP-Message/message'; // Java EE
+//const url = 'ws://localhost:8080/JSP-Message/messageasync'; // JAVA EE Async
 //const url = 'ws://localhost:8080/greeter'; //akka
 const url = 'ws://localhost:8080/chat'; //RxKotlin
 
 
-//const url = 'ws://192.168.0.18:8080/greeter'; //akka
-//const url = 'ws://192.168.0.18:8080/JSP-Message/message';
-
-
-//const url = 'ws://localhost:8080/JSP-Message/messageasync'
 //client.connect(url, 'echo-protocol', null, { username: username, password: password, create: create }); // NodeJS
 //client.connect(url,null,null,{ username: username, password: password, create: create }); //JAVA EE
 client.connect(url,null,null,{ username: username, password: password, create: create }); // akka ,reactiveX
