@@ -11,16 +11,6 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.cancel
 import org.apache.logging.log4j.LogManager
 
-/*
- * TODO Sa (Nachmittag)
- *  -blocking function for get Invitees ok
- *  -ConnectionPool should work -> currently buggy TODO check github
- *  -CodeReview ok
- *
- * Sa Abend: Presentation
- *      Akka
- *
- */
 
 /**
  * Server Manager which handles all the incoming messages and forwards them to the corresponding GroupManager
@@ -31,7 +21,7 @@ class ServerManager : Manager() {
     // Map of all the active managers (Groups + Users)
     private var managers: HashMap<String, Manager> = HashMap()
 
-    //private var d2 = DBConnRx2JDBC() // rename
+    //private var d2 = DBConnRx2JDBC()
     private var db = DBConnR2DBC()
 
     /**

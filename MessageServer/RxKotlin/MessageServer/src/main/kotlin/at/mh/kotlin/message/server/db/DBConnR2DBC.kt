@@ -26,30 +26,6 @@ class DBConnR2DBC {
 
     private var connectionFactory: ConnectionFactory = MySqlConnectionFactory.from(configuration)
 
-    //TODO test connection pool more
-    /*var factory: ConnectionFactory = ConnectionFactories.get(
-        builder()
-            .option(PROTOCOL, "mysql")
-            .option(DRIVER, "pool")
-            .option(HOST, "localhost")
-            .option(PORT, 55555)
-            .option(USER, "root")
-            .option(PASSWORD, "")
-            .option(DATABASE, "warehouse")
-            .build()
-    )
-
-    // Create a ConnectionPool for connectionFactory
-    private var configuration = ConnectionPoolConfiguration.builder(factory)
-        .maxIdleTime(Duration.ofMillis(2000))
-        .maxSize(20)
-        .acquireRetry(3)
-        .build()
-
-
-    private var connectionFactory = ConnectionPool(configuration)
-     */
-
 
     fun getUser(username: String): Maybe<String> {
         var con: Connection? = null
@@ -76,7 +52,6 @@ class DBConnR2DBC {
             }
     }
 
-    // TODO test with connection poool
     fun userExits(username: String): Single<String> {
         var con: Connection? = null
         return Single.fromPublisher(connectionFactory.create())
@@ -99,7 +74,7 @@ class DBConnR2DBC {
                     }
             }
             .retryWhen { completed -> completed.take(3).delay(10, TimeUnit.SECONDS) }
-            .first("") // TODO
+            .first("")
             .doFinally {
                 closeConnection(con)
             }
@@ -181,7 +156,6 @@ class DBConnR2DBC {
             .doFinally { closeConnection(con) }
     }
 
-    // TODO Test
     fun createUser(username: String, password: String): Completable {
         var con: Connection? = null
         return Single.fromPublisher(connectionFactory.create())
@@ -408,7 +382,6 @@ class DBConnR2DBC {
 
     fun getMessageOfUser(username: String): Flowable<Message> {
         var con: Connection? = null
-        // TODO check toFlowable and toObservable
         return Single.fromPublisher(connectionFactory.create())
             .subscribeOn(Schedulers.io())
             .toFlowable()

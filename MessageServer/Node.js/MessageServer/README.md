@@ -2,7 +2,7 @@
 
 ## Prerequesites
 -- npm and node js have been installed
--- in [/src](./src) run `npm update` in the console 
+-- run `npm update` in the console 
 #### Server
 In [sql-connector.ts](./src/Server/sql-connector.ts#L5) one has to set the credentials for the mysql database:
 ```

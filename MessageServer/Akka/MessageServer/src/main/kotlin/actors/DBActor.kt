@@ -23,7 +23,7 @@ class DBActor(private val connections: DBMessageConnector) : UntypedAbstractActo
         when (message) {
             is DBMessage -> {
                 if (message.retryCnt <= 0) {
-                    sender.tell(DBErrorMessage(message, "error TODO"), context.parent)
+                    sender.tell(DBErrorMessage(message, "error"), context.parent)
                 } else {
                     when (message) {
                         is RequestUser -> {
