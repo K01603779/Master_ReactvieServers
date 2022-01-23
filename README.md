@@ -10,11 +10,11 @@ Needed software to install :
 
 ---
 ## Database
-TODO 
+see the [Readme.md of Database](/Database) 
 
 ---
 ## Webshop
-see the [Readme.md of the Webshop ](/WebShop/)
+see the [Readme.md of the Webshop](/WebShop/)
 #### Projects
  - JavaEE
  - [Node.js Webshop](/WebShop/Node.js)
@@ -23,8 +23,8 @@ see the [Readme.md of the Webshop ](/WebShop/)
 ## Message-Server
 see the [Readme.md of MessageServer ](/MessageServer/)
 #### Projects
-- [JavaEE](/MessageServer/JavaEE)
-- [Node.js](/MessageServer/Node.js)
-- [Akka](/MessageServer/Akka)
-- [RxKotlin](/MessageServer/RxKotlin)
+- [JavaEE](/MessageServer/JavaEE/MessageServer)
+- [Node.js](/MessageServer/Node.js/MessageServer)
+- [Akka](/MessageServer/Akka/MessageServer)
+- [RxKotlin](/MessageServer/RxKotlin/MessageServer)
 ---
