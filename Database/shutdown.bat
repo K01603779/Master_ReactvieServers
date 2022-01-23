@@ -1,0 +1,1 @@
+"{path to mysqld.exe}\mysqld.exe" --defaults-file="{path to config.ini}\\config.ini" shutdown
