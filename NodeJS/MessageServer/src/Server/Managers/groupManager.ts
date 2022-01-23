@@ -1,5 +1,5 @@
 import { Message, MsgType, InviteToGroup } from "../../Messages/messages";
-import { ServerManager } from "./ServerManager";
+import { ServerManager } from "./serverManager";
 import { Manager } from "./manager";
 import { updateGroupEntiry, removeGroupEntity, getUserFromDB, retryWithOne, retryWithThree, retryWithTwo } from "../sql-connector";
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { ServerManager } from "../Server/Managers/serverManager";
-import { ClientManager } from "../Server/Managers/clientManager";
+import { ServerManager } from "./Managers/serverManager";
+import { ClientManager } from "./Managers/clientManager";
 import { getUser, createUser, retryWithTwo } from "../Server/sql-connector";
 
 const retryCnt = 3;
