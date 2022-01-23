@@ -1,12 +1,16 @@
 # Master_ReactvieServers
-TODO Add documentation
-
----
 ## Prerequisites
-Needed software to install :
-* Npm / Nodes.js
-* MySql Database
-* Tomcat Server (for JavaEE Projects)
+Below is the needed software that has to be installed for running the provided programms : 
+* Typescript/ Node.js Project :
+    * [Node.js & npm](https://nodejs.org/en/)
+    * [Visual Studio Code as IDE](https://code.visualstudio.com/download)
+* JavaEE Projects : 
+    * [Eclipse IDE for Enterprise Java and Web Developers](https://www.eclipse.org/downloads/packages/release/2021-12/r/eclipse-ide-enterprise-java-and-web-developers)
+    * [Tomcat](https://tomcat.apache.org/download-90.cgi)
+* Database
+    * [MySQL - Server](https://dev.mysql.com/downloads/mysql/)
+* RxKotlin / Akka 
+    * [Intelij as IDE](https://www.jetbrains.com/de-de/idea/download/)
 
 ---
 ## Database
