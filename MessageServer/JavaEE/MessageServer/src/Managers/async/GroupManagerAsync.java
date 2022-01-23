@@ -67,7 +67,7 @@ public class GroupManagerAsync implements Manager {
 	}
 
 	private void acceptRequest(Message message) {
-		System.out.println("GroupManager: User" + message.senderID + " accepted request");
+		//System.out.println("GroupManager: User" + message.senderID + " accepted request");
 		if (invitees.contains(message.senderID)) {
 			members.add(message.senderID);
 			invitees.remove(message.senderID);
@@ -111,7 +111,6 @@ public class GroupManagerAsync implements Manager {
 						User user = dbUser.result;
 						if (dbUser.success) {
 							if (user != null) {
-								System.out.println("GroupMangerAsync add to inveets " + message.content);
 								invitees.add(message.content);								
 								ServerManagerAsync.handleMsg(
 										new Message(groupName, message.content, "", MsgType.InviteToGroup));
@@ -133,7 +132,6 @@ public class GroupManagerAsync implements Manager {
 
 	private void sendMessage(Message message) {
 		Message send;
-		System.out.println("GroupManager : " + groupName + "sends message to members");
 		for (String member : members) {
 			send = new Message(groupName + " -> " + message.senderID, member, message.content, message.type);
 			ServerManagerAsync.handleMsg(send);

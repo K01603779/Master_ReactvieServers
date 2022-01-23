@@ -124,7 +124,6 @@ public class ServerManagerAsync {
 	public void handleMessage(String text, Session session) {
 		try {
 		JSONObject obj = new JSONObject(text);
-		//System.out.println("handle Message " + text);
 		String senderID = obj.getString("senderID");
 		String receiverID = obj.getString("receiverID");
 		String content = "";
@@ -259,7 +258,6 @@ public class ServerManagerAsync {
 	}
 
 	public static void sendBackErrorMsg(Message msg) {
-		System.out.println("sendBack Msg" + msg);
 		Manager ret = managers.get(msg.senderID);
 		if (ret != null && ret instanceof ClientManagerAsync) {
 			Message errorMsg = new Message("server", msg.senderID, msg.toString(), MsgType.Error);

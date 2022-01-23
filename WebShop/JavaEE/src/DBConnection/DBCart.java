@@ -32,7 +32,6 @@ public final class DBCart extends ConnectionPool {
 			}
 			rs.close();
 		} catch (Exception e) {
-			System.out.println("getCartFromUser resulted in Error retry " + retryCnt + "times");
 			closeConnection(con);
 			if (retryCnt == 0) {
 				return new DBResult<ShoppingCart>(cart, false);

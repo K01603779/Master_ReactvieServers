@@ -60,7 +60,6 @@ public abstract class CartServlet extends HttpServlet {
 		return ResponeState.Failure;
 	}
 
-	// TODO if logged or not add amount by number
 	private void addEntry(Item item, HttpSession session, int amount) {
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 		if (cart == null) {

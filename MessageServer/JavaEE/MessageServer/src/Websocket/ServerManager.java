@@ -110,7 +110,6 @@ public class ServerManager {
 	public void handleMessage(String text, Session session) {
 		try {
 		JSONObject obj = new JSONObject(text);
-		//System.out.println("handle Message " + text);
 		String senderID = obj.getString("senderID");
 		String receiverID = obj.getString("receiverID");
 		String content = "";
@@ -211,7 +210,6 @@ public class ServerManager {
 
 	private static void closeSession(Session session, String message) {
 		try {
-			System.out.println(message);
 			session.close();
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -67,7 +67,7 @@ public class GroupManager implements Manager {
 	}
 
 	private void acceptRequest(Message message) {
-		System.out.println("GroupManager: User" + message.senderID + " accepted request");
+		//System.out.println("GroupManager: User" + message.senderID + " accepted request");
 		if (invitees.contains(message.senderID)) {
 			members.add(message.senderID);
 			invitees.remove(message.senderID);
@@ -117,7 +117,7 @@ public class GroupManager implements Manager {
 
 	private void sendMessage(Message message) {
 		Message send;
-		System.out.println("GroupManager : " + groupName + "sends message to members");
+		//System.out.println("GroupManager : " + groupName + "sends message to members");
 		for (String member : members) {
 			send = new Message(groupName + " -> " + message.senderID, member, message.content, message.type);
 			ServerManager.handleMsg(send);

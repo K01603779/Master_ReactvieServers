@@ -155,11 +155,9 @@ class DBConnRxJava2JDBC {
                 val group = Group(tuple.value1(), tuple.value2())
                 group.members.add(tuple.value2())
                 getMembersFromGroup(group.id).subscribe {
-                    println("Found member for ${group.id} $it")
                     group.members.add(it)
                 }
                 getInvitesFromGroup(group.id).subscribe {
-                    println("Found invitee for ${group.id} $it")
                     group.invites.add(it)
                 }
                 group

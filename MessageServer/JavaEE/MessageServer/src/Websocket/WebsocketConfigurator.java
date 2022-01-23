@@ -16,11 +16,8 @@ public class WebsocketConfigurator extends Configurator {
 	        Map<String, List<String>> headers = request.getHeaders();
 	        if (headers != null) {
 	        	String username =headers.get("username").get(0);
-	        	System.out.println("Username " +username);
 	        	String password =headers.get("password").get(0);
-	        	System.out.println("Password " +password);
 	        	boolean create = Boolean.parseBoolean(headers.get("create").get(0));
-	        	System.out.println("create  " +create);
 	        	sec.getUserProperties().put("username", username);
 	        	sec.getUserProperties().put("password", password);
 	        	sec.getUserProperties().put("create", create);

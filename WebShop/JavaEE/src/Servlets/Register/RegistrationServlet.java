@@ -69,7 +69,6 @@ public class RegistrationServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		JSONObject json = new JSONObject();
 		int result = doRegister(request, response);
-		// TODO add more response
 		if (result == 0) {
 			json.put("State", ResponeState.Success);
 		} else if (result == -1) {

@@ -11,7 +11,7 @@ var pool = mysql.createPool({
 });
 
 
-export async function getUser(username: string, pwd: string): Promise<User> { // TODO change
+export async function getUser(username: string, pwd: string): Promise<User> { 
     return new Promise<User>((resolve, reject) => {
         console.log(`Login ${username} pwd ${pwd}`)
         pool.query('select * from users WHERE email = ? AND password = ?', [username, pwd], function (error, results, fields) {
@@ -125,7 +125,6 @@ export async function getTransactionEntries(transactionID: number): Promise<Arra
     });
 }
 
-//TODO change method that it resolves like javaEE
 export async function checkOut_old(user: User): Promise<boolean> {
     // set autocommit
     return new Promise((resolve, reject) => {

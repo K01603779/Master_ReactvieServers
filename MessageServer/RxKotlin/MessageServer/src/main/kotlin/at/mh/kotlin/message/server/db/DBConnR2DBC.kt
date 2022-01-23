@@ -66,10 +66,8 @@ class DBConnR2DBC {
                     .execute()
             }
             .flatMap { result: Result ->
-                println("Map Result $username")
                 result
                     .map { row: Row, _: RowMetadata? ->
-                        println(row)
                         row.get("respondentID", String::class.java)
                     }
             }
@@ -340,7 +338,6 @@ class DBConnR2DBC {
             .subscribeOn(Schedulers.io())
             .toFlowable()
             .flatMap { connection: Connection ->
-                println("GetConnection FromGroup")
                 closeConnection(con)
                 con = connection
                 connection
@@ -374,7 +371,6 @@ class DBConnR2DBC {
                     .bind(3, message.type.ordinal)
                     .execute()
             }
-            // TODO test doFinally here and delete the con?.close() in map
             .retryWhen { completed -> completed.take(3).delay(10, TimeUnit.SECONDS) }
             .ignoreElements()
             .doFinally { closeConnection(con) }

@@ -53,12 +53,10 @@ public class LogoutServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("LogOutPost");
 		doLogOut(request, response);
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("LogOutPost");
 		doLogOut(request, response);
 	}
 	
