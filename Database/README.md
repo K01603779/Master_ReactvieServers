@@ -1,7 +1,6 @@
 # Database
-TODO add documentation
-how to download and install 
 
+Download the [MySQL - Server](https://dev.mysql.com/downloads/mysql/) and extract the windows zip
 
 ## Set up the config.ini file
 Set up the config ini file to contain the correct path to the server
@@ -15,6 +14,8 @@ Set up the config ini file to contain the correct path to the server
 
 - create the following sql script [init_db](./init_db.sql)
 
-- execture initServer.bat and then start startServer.bat
+- execute initServer.bat and then start startServer.bat
 
-- after that execture the following .sql script
+- after that execute the following .sql script
+
+

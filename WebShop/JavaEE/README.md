@@ -1,4 +1,4 @@
-# JavaEE Message Server 
+# JavaEE Webshop
 ## Prerequisites
 - Tomcat Server is setup
 ---

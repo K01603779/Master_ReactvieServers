@@ -3,7 +3,7 @@
 ## Structure of the project
  - TODO 
 ---
-## Prerequesites
+## Prerequisites
 
 - Intelij with gradle is installed
 - run `gradle build`
@@ -19,3 +19,4 @@
 ---
 
 Just run the main.kt main function
+

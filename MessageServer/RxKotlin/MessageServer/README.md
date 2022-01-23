@@ -4,7 +4,7 @@
  - This project uses ktor for the server deployment https://ktor.io/ for a detailed documentation 
  - TODO 
 ---
-## Prerequesites
+## Prerequisites
 
 - Intelij with gradle is installed
 - run `gradle build`
@@ -21,3 +21,4 @@ In [application.conf](./src/main/resources/application.conf#L3) one can set the 
 ---
 
 Just run the main.kt main function
+

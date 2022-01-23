@@ -1,6 +1,6 @@
 # Node.js Message Server
 
-## Prerequesites
+## Prerequisites
 - npm and node js have been installed
 - run `npm update` in the console 
 #### Server
@@ -17,7 +17,7 @@ var pool = mysql.createPool({
 });
 ```
 #### Client
-In [client.ts](./src/Client/client.ts#L117) one has to set the url for the websocket connection and how the client will connecto to the message server :
+In [client.ts](./src/Client/client.ts#L117) one has to set the url for the WebSocket connection and how the client will connect to the message server :
 ```
 // Default location of the Node.js server
 const url = 'ws://localhost:8080/'; 
@@ -29,7 +29,6 @@ const url = 'ws://localhost:8080/';
 //const url = 'ws://localhost:8080/greeter'; 
 // Default location of the RxKotlin server
 const url = 'ws://localhost:8080/chat';
-
 
 // Node.js connect
 client.connect(url, 'echo-protocol', null, { username: username, password: password, create: create });
@@ -50,12 +49,12 @@ After the specified server is running (Akka,Node.js,RxKotlin,JavaEE ) and settin
 
 - `username` is the username of the user 
 - `password` the password of the user
-- `created` (optional) if true a new user is registerd database containing the specified credentials else the credentials are used to log the user in 
+- `created` (optional) if true a new user is registered database containing the specified credentials else the credentials are used to log the user in 
 
 - e.g. ``npm run client TestClient 12345 true`` would try to register a user "TestClient" with password 12345 in the databaes and log the client in
 
 ### Commands
-After the user has been sucessfully logged in one can use the flowing textcommands to send Messages to the server:
+After the user has been successfully logged in one can use the flowing text commands to send Messages to the server:
 
 - Send a message to another user or another group
 
@@ -82,7 +81,7 @@ After the user has been sucessfully logged in one can use the flowing textcomman
 
   Using the command  ``add;[User];[Gropname]``
 
-  would sent a group request to the specifed user
+  would sent a group request to the specified user
 
   e.g. ``add;TestUser1;Testgroup1``
 - accept a group request
@@ -112,3 +111,5 @@ After the user has been sucessfully logged in one can use the flowing textcomman
 All of these commands can be used with each of the provided message serves
 
 ---
+
+

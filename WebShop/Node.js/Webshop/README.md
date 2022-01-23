@@ -1,6 +1,6 @@
 # Node.js WebShop
 
-## Prerequesites
+## Prerequisites
 - npm and node js have been installed
 - run `npm update` in the console 
 #### Server
@@ -19,7 +19,7 @@ var pool = mysql.createPool({
 });
 ```
 #### Client
-In [client.ts](./src/Client/client.ts#L77) one has to set the url for the websocket connection
+In [client.ts](./src/Client/client.ts#L77) one has to set the URL for the WebSocket connection
 
 ---
 
@@ -35,6 +35,7 @@ In [client.ts](./src/Client/client.ts) the following methods allows the client t
  - `sendRegisterUser`sends a user registration request
  - `sendSearchItem` client sends a request to the server to search the database for the items with the given name
  - `sendGetTransactions` sends a request to retrieve all the previous performed purchases
- - `sendModifyCart` sends a cart modifiaction request (add or remove items from the cart)
- - `sendCheckOut` send a checkout request to initate the checkout 
+ - `sendModifyCart` sends a cart modification request (add or remove items from the cart)
+ - `sendCheckOut` send a checkout request to initiate the checkout 
 ---
+

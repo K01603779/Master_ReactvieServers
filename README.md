@@ -1,6 +1,6 @@
 # Master_ReactvieServers
 ## Prerequisites
-Below is the needed software that has to be installed for running the provided programms : 
+Below is the needed software that has to be installed for running the provided programs : 
 * Typescript/ Node.js Project :
     * [Node.js & npm](https://nodejs.org/en/)
     * [Visual Studio Code as IDE](https://code.visualstudio.com/download)
@@ -25,10 +25,12 @@ see the [Readme.md of the Webshop](/WebShop/)
  - [Website](/WebShop/WebsiteInterface)
  ---
 ## Message-Server
-see the [Readme.md of MessageServer ](/MessageServer/)
+see the [Readme.md of MessageServer](/MessageServer/)
 #### Projects
 - [JavaEE](/MessageServer/JavaEE/MessageServer)
 - [Node.js](/MessageServer/Node.js/MessageServer)
 - [Akka](/MessageServer/Akka/MessageServer)
 - [RxKotlin](/MessageServer/RxKotlin/MessageServer)
 ---
+
+
