@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "nodejs-server",
+  "scripts": {
+    "server": "tsc && node ./dist/Server/server",
+    "client": "tsc && node ./dist/Client/client"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "mysql": "^2.18.1",
+    "prompt-sync": "^4.2.0",
+    "websocket": "^1.0.34"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "tslint": "^5.20.1",
+    "typescript": "^3.9.10"
+  }
+}
