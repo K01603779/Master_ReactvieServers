@@ -18,14 +18,12 @@ public class MyServlet extends HttpServlet {
 	
 	@Override
 	public void init() throws ServletException {
-		// TODO Auto-generated method stub
 		super.init();
 		connectionCnt =0;
 	}
 	
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
 		super.destroy();
 		System.out.println(connectionCnt++);
 	}

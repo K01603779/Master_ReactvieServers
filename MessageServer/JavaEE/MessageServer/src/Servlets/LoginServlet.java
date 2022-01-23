@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		// logging example
 		log("User=" + username + "::password=" + pwd);
 		if (username != "" && pwd != "") {
-			User user = DBMessage.getUser(username, pwd, 3).result; // TODO
+			User user = DBMessage.getUser(username, pwd, 3).result; 
 			if (user != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", user);

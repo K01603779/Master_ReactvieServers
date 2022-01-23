@@ -396,7 +396,7 @@ class DBConnR2DBC {
             .flatMap { result: Result ->
                 result
                     .map { row: Row, _: RowMetadata? ->
-                        //deleteMessage(row["messageID"] as Int) //TODO use names
+                        //deleteMessage(row["messageID"] as Int)
                         createMessage(row[1] as String, row[2] as String, row[3] as String, row[4] as Int)
                     }
             }

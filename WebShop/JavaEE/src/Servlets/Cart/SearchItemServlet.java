@@ -56,7 +56,6 @@ public class SearchItemServlet extends CartServlet {
 		resp.setStatus(HttpServletResponse.SC_OK);
 	}
 
-	// TODO if logged or not
 	private void setAccessControlHeaders(HttpServletResponse resp) {
 		resp.setHeader("Access-Control-Allow-Origin", "http://localhost:5000");
 		resp.setHeader("Access-Control-Allow-Credentials", "true");

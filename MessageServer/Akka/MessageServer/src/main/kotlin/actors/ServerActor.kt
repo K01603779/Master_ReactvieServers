@@ -403,7 +403,6 @@ class ServerActor : UntypedAbstractActor() {
         if (message.success && message.result != null) { // If user exists
             //log.info("getUser success ${message.result.password}")
             this.createWebSocket(message.result.id, message.wsUpgrade, message.actorRef)
-            // TODO uncomment
             dbRouter.tell(FindMessagesOfUser(message.result.id, retryCnt), self) // find the DB-Messages of the user
         } else {
             message.actorRef.tell(HttpResponse.create().withStatus(404), this.self())

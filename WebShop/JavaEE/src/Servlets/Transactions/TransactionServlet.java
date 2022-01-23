@@ -40,9 +40,7 @@ public class TransactionServlet extends CheckOutServlet {
 		if(result ==0 ) {
 			HttpSession session =request.getSession(false);
 			LinkedList<Transaction> list = (LinkedList<Transaction>) session.getAttribute("transactions");
-			json.put("list", list);
-			// TODO
-			
+			json.put("list", list);			
 		}
 		out.print(json.toString());
 		out.flush();

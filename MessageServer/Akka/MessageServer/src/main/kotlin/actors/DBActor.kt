@@ -420,11 +420,10 @@ class DBActor(private val connections: DBMessageConnector) : UntypedAbstractActo
                 } else {
                     log.error("msg was null")
                 }
-                /*prep2 = con.prepareStatement("delete from message where messageID = ?")
+                prep2 = con.prepareStatement("delete from message where messageID = ?")
                 prep2.setInt(1, messageID)
                 prep2.execute()
-                prep2.close()*/
-                //this.context.parent.tell(DeleteMessage(messageID,retryCnt = 3), ActorRef.noSender()) //TODO test
+                prep2.close()                
             }
             rs.close()
         } catch (e: java.lang.Exception) {

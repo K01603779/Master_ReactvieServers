@@ -35,7 +35,7 @@ public abstract class ConnectionPool {
 	}
 
 	
-	static ExecutorService es = Executors.newFixedThreadPool(88); //TODO 
+	static ExecutorService es = Executors.newFixedThreadPool(20); 
 
 	public static ExecutorService getExecutor() {
 		return es;

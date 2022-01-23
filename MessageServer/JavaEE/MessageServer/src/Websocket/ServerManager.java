@@ -43,14 +43,14 @@ public class ServerManager {
 		session.setMaxIdleTimeout(0);
 		if (managers.get(username) == null) {
 			//System.out.println("New Connection - get User");
-			DBResult<User> dbUser = DBMessage.getUser(username, password, retryCnt);// TODO;
+			DBResult<User> dbUser = DBMessage.getUser(username, password, retryCnt);
 			//System.out.println("New Connection - get User -Result");
 			if (dbUser.success) {
 				User user = dbUser.result;
 				if (create) {
 					if (user == null) {
-						// TODO create user
-						DBResult<String> dbString = DBMessage.createUser(username, password, retryCnt); // TODO
+						// create user
+						DBResult<String> dbString = DBMessage.createUser(username, password, retryCnt); 
 						String result = dbString.result;
 						if (dbString.success) {
 							if (!result.equals("")) {
@@ -80,8 +80,6 @@ public class ServerManager {
 							for (Message message : messages) {
 								ServerManager.handleMsg(message);
 							}
-						} else {
-							// TODO
 						}
 					} else {
 						closeSession(session, "ServerManager: No User  " + username + "found in DB");
@@ -139,7 +137,6 @@ public class ServerManager {
 			if (managers.containsKey(message.receiverID)) {
 				managers.get(message.receiverID).handleMsg(message);
 			} else {
-				// TODO store in DB
 				DBResult<Respondent> dbRespondent = DBMessage.getRespondent(message.receiverID, retryCnt);
 				if (dbRespondent.success) {
 					Respondent resp = dbRespondent.result;
@@ -168,7 +165,6 @@ public class ServerManager {
 	}
 
 	private static void delteGroup(Message msg) {
-		// TODO DBs
 		Manager manager = managers.get(msg.content);
 		boolean result;
 		if (manager != null && manager instanceof GroupManager) {
@@ -197,7 +193,6 @@ public class ServerManager {
 	}
 
 	private static void createGroup(Message msg) {
-		// TODO DBs
 		if (managers.get(msg.content) == null) {
 			DBResult<Group> dbResult = DBMessage.getGroup(msg.content, retryCnt);
 			if (dbResult.success) {

@@ -134,7 +134,6 @@ class ServerManager : Manager() {
                 }
                 .subscribe { exists ->
                     if (!exists) {
-                        // TODO only create group if success
                         db.createGroup(message.content, message.senderID)
                             .onErrorComplete {
                                 logger.warn("DB-Error $it")
@@ -224,9 +223,7 @@ class ServerManager : Manager() {
                 if (!managers.containsKey(username) && foundUser) {
                     logger.info("User found $username")
                     managers[username] = user
-                    // TODO explain why during presentation
                     user.subscribeOn(Schedulers.computation()).subscribe(this)
-                    // TODO uncomment
                     db.getMessageOfUser(username)
                         .onErrorReturn {
                             logger.warn("DB-error $it")
@@ -234,7 +231,7 @@ class ServerManager : Manager() {
                         }
                         .subscribe {
                             logger.info("Message from db $it")
-                            user.sendMsg(it) // TODO non null
+                            user.sendMsg(it)
                         }
 
                 } else {
@@ -282,7 +279,7 @@ class ServerManager : Manager() {
                             .subscribe {
                                 logger.info("User $username registered")
                                 managers[username] = user
-                                user.subscribeOn(Schedulers.computation()).subscribe(this) // TODO
+                                user.subscribeOn(Schedulers.computation()).subscribe(this)
                             }
                     }
                 }

@@ -1,7 +1,7 @@
 package Entities;
 
 public enum MsgType {
-	Error, // TODO
+	Error,
 	Private, CreateGroup, InviteToGroup, DeclineRequest, AcceptRequest, LeaveGroup, RemoveGroup;
 	
 	public static MsgType of(int value) {

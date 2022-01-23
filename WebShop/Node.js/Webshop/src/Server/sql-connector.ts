@@ -83,7 +83,6 @@ export async function getItemByID(itemID: number): Promise<Item> {
     });
 }
 
-// TODO 
 export async function getTransactions(user: User): Promise<Array<Transaction>> {
     return new Promise<Array<Transaction>>((resolve, reject) => {
         pool.query('select * from transactions  where userID = ?', [user.userID], async function (error, results, fields) {
@@ -205,7 +204,6 @@ async function getCartEntries(cartID: number): Promise<Array<CartEntry>> {
     });
 }
 
-// TODO 
 export async function getCartFromUser(user: User): Promise<Cart> {
     return new Promise<Cart>((resolve, reject) => {
         pool.query('SELECT * FROM carts where userID = ?', [user.userID], async function (error, results, fields) {
@@ -217,7 +215,6 @@ export async function getCartFromUser(user: User): Promise<Cart> {
                         var cart: Cart = { cartID: results[0].cartID, entries: entries };
                         resolve(cart);
                     }).catch(() => {
-                        // TODO 
                         reject(null);
                     })
                 }

@@ -20,8 +20,7 @@ public class DBMessage extends ConnectionPool {
 		Connection con = null;
 		try {
 			con = getConnection();
-			System.out.println("New Connection - get Connection");
-			// TODO use MsgType
+			System.out.println("New Connection - get Connection");			
 			PreparedStatement prep = con
 					.prepareStatement("select * from respondent where respondentID =? and content =? and type = 0");
 			prep.setString(1, username);
@@ -71,7 +70,6 @@ public class DBMessage extends ConnectionPool {
 		Connection con = null;
 		try {
 			con = getConnection();
-			// TODO use MsgType
 			PreparedStatement prep = con
 					.prepareStatement("select * from respondent where respondentID =? and type = 0");
 			prep.setString(1, username);
@@ -97,7 +95,6 @@ public class DBMessage extends ConnectionPool {
 		Connection con = null;
 		try {
 			con = getConnection();
-			// TODO use MsgType
 			PreparedStatement prep = con.prepareStatement("select * from respondent where respondentID =?");
 			prep.setString(1, id);
 			ResultSet rs = prep.executeQuery();
@@ -151,7 +148,6 @@ public class DBMessage extends ConnectionPool {
 		Connection con = null;
 		try {
 			con = getConnection();
-			// TODO use MsgType
 			PreparedStatement prep = con
 					.prepareStatement("select * from respondent where respondentID =? and type = 1");
 			prep.setString(1, groupname);

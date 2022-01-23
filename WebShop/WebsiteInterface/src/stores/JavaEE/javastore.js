@@ -4,7 +4,6 @@ import { loginRequest, logoutRequest, searchItemRequest, viewTransactionsRequest
 import {loggedIn,user,register,transactions,searchresults,cart} from "../store";
 
 export function requestLogin(username, password) {
-    // TODO login
     loginRequest(username, password, function (response) {
         if (response === true) {
             loggedIn.set(true);

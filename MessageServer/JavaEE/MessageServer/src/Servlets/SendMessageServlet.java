@@ -46,7 +46,7 @@ public class SendMessageServlet extends HttpServlet {
 			String pwd = request.getParameter("pwd");
 			log("User=" + senderID + "::password=" + pwd);
 			if (senderID != "" && pwd != "") {
-				user = DBMessage.getUser(senderID, pwd, 3).result;// TODO;
+				user = DBMessage.getUser(senderID, pwd, 3).result;
 
 			}
 		}

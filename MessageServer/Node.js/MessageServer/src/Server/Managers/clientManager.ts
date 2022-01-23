@@ -7,7 +7,7 @@ export class ClientManager implements Manager {
 
     connection: any;
     username: string;
-    user: any; // TODO
+    user: any;
 
     constructor(connection: any, username: string) {
         this.connection = connection;
@@ -30,9 +30,6 @@ export class ClientManager implements Manager {
             console.log(`ClientManager ${this.username} handleMessage ${JSON.stringify(message)}`);
             this.connection.send(JSON.stringify(message));
         }
-    }
-    storeMessagesinDB(message: Message) {
-        // TODO 
     }
 
     setUp(manager: ServerManager) {

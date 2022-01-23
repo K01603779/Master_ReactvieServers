@@ -150,7 +150,6 @@ public class ServerManagerAsync {
 			if (managers.containsKey(message.receiverID)) {
 				managers.get(message.receiverID).handleMsg(message);
 			} else {
-				// TODO store in DB
 				CompletableFuture.supplyAsync(() -> DBMessage.getRespondent(message.receiverID, 3),
 						DBMessage.getExecutor()).thenAccept(dbResp -> {
 							Respondent resp = dbResp.result;
@@ -162,7 +161,7 @@ public class ServerManagerAsync {
 											sendBackErrorMsg(message);
 										}
 									});
-									DBMessage.storeMsg(message,3); // TODO
+									DBMessage.storeMsg(message,3); 
 								} else if (resp instanceof Group) {
 									Group grp = (Group) resp;
 									System.out.println("Created Group " + resp.id);
@@ -170,7 +169,7 @@ public class ServerManagerAsync {
 											.supplyAsync(() -> DBMessage.getUserEntriesFromGroup(resp.id,3),
 													DBMessage.getExecutor())
 											.thenAccept(dbEntries -> {
-												SimpleEntry<List<String>, List<String>> entries =dbEntries.result; // TODO 
+												SimpleEntry<List<String>, List<String>> entries =dbEntries.result; 
 												GroupManagerAsync group = new GroupManagerAsync(grp.manager, grp.id,
 														entries.getKey(), entries.getValue());
 												managers.put(resp.id, group);
@@ -186,7 +185,6 @@ public class ServerManagerAsync {
 	}
 
 	private static void delteGroup(Message msg) {
-		// TODO DBs
 		Manager manager = managers.get(msg.content);
 		if (manager != null && manager instanceof GroupManagerAsync) {
 			System.out.println("Deleted Group " + msg.content);
@@ -223,7 +221,6 @@ public class ServerManagerAsync {
 	}
 
 	private static void createGroup(Message msg) {
-		// TODO DBs
 		if (managers.get(msg.content) == null) {
 			CompletableFuture.supplyAsync(() -> DBMessage.getGroup(msg.content, 3),
 					DBMessage.getExecutor()).thenAccept(dbGr -> {

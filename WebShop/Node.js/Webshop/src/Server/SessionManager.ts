@@ -92,7 +92,6 @@ class SessionManager {
                     retmsg = new ReturnMessageLogin(State.Success, this.user.email);
                     if (this.cart != null) {
                         retryWithTwo(updateCart, this.user, this.cart).catch(() => {
-                            //TODO 
                             console.log("Error while updating cart after login " + this.user.email);
                         });
                     }

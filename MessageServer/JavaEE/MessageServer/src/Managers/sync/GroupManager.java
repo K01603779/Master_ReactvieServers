@@ -42,8 +42,7 @@ public class GroupManager implements Manager {
 
 	@Override
 	public void handleMsg(Message message) {
-		// TODO Auto-generated method stub
-		System.out.println("GroupManager " + groupName + "Received Msg " + message.toString());
+		//System.out.println("GroupManager " + groupName + "Received Msg " + message.toString());
 		if (message != null && (invitees.contains(message.senderID) || members.contains(message.senderID))) {
 			switch (message.type) {
 			case Private:
@@ -82,7 +81,7 @@ public class GroupManager implements Manager {
 
 	private void declineRequest(Message message) {
 		invitees.remove(message.senderID);
-		boolean result = DBMessage.removeGroupEntry(this.groupName, message.senderID, 3); // TODO
+		boolean result = DBMessage.removeGroupEntry(this.groupName, message.senderID, 3); 
 		if (!result) {
 			ServerManager.sendBackErrorMsg(message);
 		}
@@ -90,7 +89,7 @@ public class GroupManager implements Manager {
 
 	private void leaveGroup(Message message) {
 		members.remove(message.senderID);
-		boolean result = DBMessage.removeGroupEntry(this.groupName, message.senderID, 3); // TODO
+		boolean result = DBMessage.removeGroupEntry(this.groupName, message.senderID, 3); 
 		if (!result) {
 			ServerManager.sendBackErrorMsg(message);
 		}
@@ -102,8 +101,7 @@ public class GroupManager implements Manager {
 			User user = dbUser.result;
 			if (dbUser.success) {
 				if (user != null) {
-					invitees.add(message.content);
-					// TODO send to client
+					invitees.add(message.content);					
 					boolean result = DBMessage.updateGroupEntry(this.groupName, user.id, false, 3);
 					if (result) {
 						ServerManager.handleMsg(new Message(groupName, message.content, "", MsgType.InviteToGroup));

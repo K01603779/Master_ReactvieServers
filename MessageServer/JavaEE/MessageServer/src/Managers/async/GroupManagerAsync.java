@@ -42,8 +42,7 @@ public class GroupManagerAsync implements Manager {
 
 	@Override
 	public void handleMsg(Message message) {
-		// TODO Auto-generated method stub
-		System.out.println("GroupManager " + groupName + "Received Msg " + message.toString());
+		//System.out.println("GroupManager " + groupName + "Received Msg " + message.toString());
 		if (message != null && (invitees.contains(message.senderID) || members.contains(message.senderID))) {
 			switch (message.type) {
 			case Private:
@@ -113,8 +112,7 @@ public class GroupManagerAsync implements Manager {
 						if (dbUser.success) {
 							if (user != null) {
 								System.out.println("GroupMangerAsync add to inveets " + message.content);
-								invitees.add(message.content);
-								// TODO send to client
+								invitees.add(message.content);								
 								ServerManagerAsync.handleMsg(
 										new Message(groupName, message.content, "", MsgType.InviteToGroup));
 								CompletableFuture

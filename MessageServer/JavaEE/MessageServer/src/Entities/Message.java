@@ -27,7 +27,6 @@ public class Message {
 		json.put("receiverID", receiverID);
 		json.put("type", type.ordinal());
 		json.put("content", content);
-		// TODO Auto-generated method stub
 		return json.toString();
 	}
 	

@@ -109,7 +109,7 @@ connection.onmessage = function (event) {
                     transactions.set(msg.list);
                 }
                 break;
-            case 6: //TODO checkout
+            case 6:
                 console.log("Checkout");
                 if (msg.state == 0) {
                     sendGetTransactions();
