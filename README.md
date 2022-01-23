@@ -1,27 +1,30 @@
 # Master_ReactvieServers
 TODO Add documentation
+
+---
 ## Prerequisites
 Needed software to install :
 * Npm / Nodes.js
 * MySql Database
 * Tomcat Server (for JavaEE Projects)
 
+---
 ## Database
 TODO 
+
+---
 ## Webshop
 see the [Readme.md of the Webshop ](/WebShop/)
+#### Projects
+ - JavaEE
+ - [Node.js Webshop](/WebShop/Node.js)
+ - [Website](/WebShop/WebsiteInterface)
+ ---
 ## Message-Server
-
-
-
-## Projects 
-
-#### Webshop
-* JavaEE - Webshop
-* Nodejs - Webshop
-* Svelte - Interface for the Webshop
-#### MessageServer
-* JavaEE - Message-Server
-* Nodejs - Message-Server
-* Akka - Message Server
-* RxKotlin - Message Server 
+see the [Readme.md of MessageServer ](/MessageServer/)
+#### Projects
+- [JavaEE](/MessageServer/JavaEE)
+- [Node.js](/MessageServer/Node.js)
+- [Akka](/MessageServer/Akka)
+- [RxKotlin](/MessageServer/RxKotlin)
+---
