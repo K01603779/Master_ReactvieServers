@@ -17,7 +17,7 @@ see the [Readme.md of Database](/Database)
 see the [Readme.md of the Webshop](/WebShop/)
 #### Projects
  - [JavaEE](/WebShop/JavaEE)
- - [Node.js Webshop](/WebShop/Node.js/WebShop)
+ - [Node.js Webshop](/WebShop/Node.js/Webshop)
  - [Website](/WebShop/WebsiteInterface)
  ---
 ## Message-Server
