@@ -9,7 +9,7 @@ Needed software to install :
 ## Database
 TODO 
 ## Webshop
-see the [Readme.md of the Webshop ](../Webshop/)
+see the [Readme.md of the Webshop ](/WebShop/)
 ## Message-Server
 
 
