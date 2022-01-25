@@ -121,7 +121,7 @@ client.on('connect', function (connection) {
 const url = 'ws://localhost:8080/chat'; //RxKotlin
 
 
-//client.connect(url, 'echo-protocol', null, { username: username, password: password, create: create }); // NodeJS
-//client.connect(url,null,null,{ username: username, password: password, create: create }); //JAVA EE
+//client.connect(url, 'echo-protocol', null, { username: username, password: password, create: create }); // Java EE
+//client.connect(url,null,null,{ username: username, password: password, create: create }); //Node.js
 client.connect(url,null,null,{ username: username, password: password, create: create }); // akka ,reactiveX
 
