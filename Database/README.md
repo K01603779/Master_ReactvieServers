@@ -30,3 +30,9 @@ Set up the config ini file to contain the correct path to the server
 
 
 
+----
+
+# Tomcat Server for Java EE Projects
+## Create a Tomcat Server in the Eclipse IDE 
+In the Eclipse IDE go to Server -> New and select an Apache Tomcat Server -> Download the Server and and create one 
+Afterwards one has to modifiy the tomcats context.xml and add a Resource for the database to it see [context.xml](/Tomcat/context.xml)
